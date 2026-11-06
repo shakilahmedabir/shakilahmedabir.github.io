@@ -174,16 +174,18 @@ APP.setLang=setLang;
 /* ---------- forms → email ---------- */
 async function sendForm(form,extra){
   const st=$('.status',form),btn=$('button:not([type=button])',form),data=Object.fromEntries(new FormData(form));
-  Object.assign(data,extra||{});data._subject=`[Portfolio] ${form.dataset.kind} — ${data.name||''}`;data._template='table';data._captcha='false';data.page_language=L();
+  Object.assign(data,extra||{});data._subject=`[Portfolio] ${form.dataset.kind} — ${data.name||''}`;data.page_language=L();
+  // Web3Forms fields: access_key + subject + from_name; the visitor's "email" becomes the reply-to automatically
+  Object.assign(data,{access_key:CONFIG.web3formsKey,subject:data._subject,from_name:'Shakil Ahmed Portfolio',botcheck:''});
   if(data._honey){return}
   btn.disabled=true;st.textContent=ui('f_sending');
-  try{const r=await fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)});
+  try{const r=await fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(Object.fromEntries(Object.entries(data).filter(([k])=>k!=='_subject')))});
     const j=await r.json().catch(()=>({}));
     // FormSubmit answers 200 even when it did NOT deliver (e.g. form not activated yet) — check "success"
     if(!r.ok||String(j.success)!=='true')throw new Error(j.message||('HTTP '+r.status));
     st.textContent=ui('f_ok');toast(ui('f_ok'));form.reset();btn.disabled=false;return true}
   catch(e){btn.disabled=false;
-    const body=Object.entries(data).filter(([k])=>!k.startsWith('_')).map(([k,v])=>`${k}: ${v}`).join('\n');
+    const body=Object.entries(data).filter(([k])=>!k.startsWith('_')&&!['access_key','subject','from_name','botcheck'].includes(k)).map(([k,v])=>`${k}: ${v}`).join('\n');
     const gmail=`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONFIG.email)}&su=${encodeURIComponent(data._subject)}&body=${encodeURIComponent(body)}`;
     const wa=`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(data._subject+'\n\n'+body)}`;
     const mail=`mailto:${CONFIG.email}?subject=${encodeURIComponent(data._subject)}&body=${encodeURIComponent(body)}`;

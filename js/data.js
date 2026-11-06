@@ -17,8 +17,10 @@ window.CONFIG = {
   availability: { en:"Available every day after 6:00 pm (Bangladesh time)", bn:"প্রতিদিন সন্ধ্যা ৬টার পর (বাংলাদেশ সময়)", ar:"متاح يومياً بعد الساعة 6 مساءً (بتوقيت بنغلاديش)", de:"Täglich ab 18:00 Uhr verfügbar (Bangladesch-Zeit)" },
   availFrom: "18:00",
   location: { en:"Mirpur-10, Dhaka, Bangladesh", bn:"মিরপুর-১০, ঢাকা, বাংলাদেশ", ar:"ميربور-10، دكا، بنغلاديش", de:"Mirpur-10, Dhaka, Bangladesch" },
-  // Free form-to-email service. First submission sends you an activation email — click it once.
-  formEndpoint: "https://formsubmit.co/ajax/shakilahmedabir@gmail.com",
+  // Free form-to-email service: Web3Forms (account herrshakil@gmail.com — messages arrive there).
+  // The access key is public by design (it only allows sending TO you), so it is safe in this file.
+  formEndpoint: "https://api.web3forms.com/submit",
+  web3formsKey: "e0ebb571-28aa-435e-aac5-c541925baec9",
   avatar: "assets/me.jpg",              // hero photo (from 01_Profile/Photos_original/me4.png)
   faceAvatar: "assets/me_face.jpg",     // small round photo in the header
   cardAvatar: "assets/me_card.jpg",     // game character card (from me5.png)
