@@ -178,10 +178,17 @@ async function sendForm(form,extra){
   if(data._honey){return}
   btn.disabled=true;st.textContent=ui('f_sending');
   try{const r=await fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)});
-    if(!r.ok)throw new Error(r.status);st.textContent=ui('f_ok');toast(ui('f_ok'));form.reset();btn.disabled=false;return true}
-  catch(e){st.textContent=ui('f_fail');btn.disabled=false;
+    const j=await r.json().catch(()=>({}));
+    // FormSubmit answers 200 even when it did NOT deliver (e.g. form not activated yet) — check "success"
+    if(!r.ok||String(j.success)!=='true')throw new Error(j.message||('HTTP '+r.status));
+    st.textContent=ui('f_ok');toast(ui('f_ok'));form.reset();btn.disabled=false;return true}
+  catch(e){btn.disabled=false;
     const body=Object.entries(data).filter(([k])=>!k.startsWith('_')).map(([k,v])=>`${k}: ${v}`).join('\n');
-    location.href=`mailto:${CONFIG.email}?subject=${encodeURIComponent(data._subject)}&body=${encodeURIComponent(body)}`;return true}
+    const gmail=`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONFIG.email)}&su=${encodeURIComponent(data._subject)}&body=${encodeURIComponent(body)}`;
+    const wa=`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(data._subject+'\n\n'+body)}`;
+    const mail=`mailto:${CONFIG.email}?subject=${encodeURIComponent(data._subject)}&body=${encodeURIComponent(body)}`;
+    st.innerHTML=`<span>${esc(ui('f_fail'))}</span><span class="fallback"><a class="btn primary" href="${gmail}" target="_blank" rel="noopener">✉️ Gmail</a><a class="btn" href="${wa}" target="_blank" rel="noopener">💬 WhatsApp</a><a class="btn" href="${mail}">📧 ${esc(ui('f_mailapp'))}</a></span>`;
+    console.warn('Form not delivered:',e.message);return false}
 }
 APP.sendForm=sendForm;
 
