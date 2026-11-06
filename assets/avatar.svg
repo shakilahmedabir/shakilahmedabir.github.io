@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Cute chibi teacher avatar (placeholder). Replace with your photo: set CONFIG.avatar = "assets/me.jpg" -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7f5af0"/><stop offset="1" stop-color="#2cb67d"/></linearGradient>
+    <clipPath id="c"><circle cx="100" cy="100" r="96"/></clipPath>
+  </defs>
+  <circle cx="100" cy="100" r="96" fill="url(#bg)"/>
+  <g clip-path="url(#c)">
+    <!-- body / shirt -->
+    <path d="M30 200c4-38 34-58 70-58s66 20 70 58z" fill="#8fa5c2"/>
+    <path d="M84 142l16 26 16-26z" fill="#fff"/>
+    <path d="M70 146l30 40-12-44zM130 146l-30 40 12-44z" fill="#7a91b0"/>
+    <path d="M96 150h8l4 34h-16z" fill="#b5172e"/>
+    <g fill="#fff" opacity=".8"><circle cx="99" cy="158" r="1.1"/><circle cx="103" cy="165" r="1.1"/><circle cx="98" cy="172" r="1.1"/><circle cx="102" cy="179" r="1.1"/></g>
+    <!-- neck -->
+    <rect x="88" y="124" width="24" height="22" rx="8" fill="#e0a77a"/>
+    <!-- head -->
+    <ellipse cx="100" cy="92" rx="46" ry="44" fill="#f0bb8f"/>
+    <!-- ears -->
+    <ellipse cx="54" cy="96" rx="8" ry="11" fill="#e8ad80"/><ellipse cx="146" cy="96" rx="8" ry="11" fill="#e8ad80"/>
+    <!-- hair -->
+    <path d="M54 88c-4-34 22-52 50-50 30 2 46 22 42 50-6-14-16-22-30-24-6 8-22 12-40 10-8 2-16 6-22 14z" fill="#1b1b1f"/>
+    <!-- glasses -->
+    <g fill="none" stroke="#222" stroke-width="3">
+      <rect x="66" y="86" width="28" height="22" rx="9"/><rect x="106" y="86" width="28" height="22" rx="9"/><path d="M94 96h12"/>
+    </g>
+    <!-- eyes (blink) -->
+    <g fill="#222">
+      <ellipse cx="80" cy="97" rx="5" ry="6"><animate attributeName="ry" values="6;6;0.6;6;6" keyTimes="0;0.9;0.93;0.96;1" dur="4s" repeatCount="indefinite"/></ellipse>
+      <ellipse cx="120" cy="97" rx="5" ry="6"><animate attributeName="ry" values="6;6;0.6;6;6" keyTimes="0;0.9;0.93;0.96;1" dur="4s" repeatCount="indefinite"/></ellipse>
+    </g>
+    <circle cx="82" cy="95" r="1.8" fill="#fff"/><circle cx="122" cy="95" r="1.8" fill="#fff"/>
+    <!-- cheeks -->
+    <ellipse cx="68" cy="114" rx="7" ry="4" fill="#ff8fab" opacity=".6"/><ellipse cx="132" cy="114" rx="7" ry="4" fill="#ff8fab" opacity=".6"/>
+    <!-- beard shadow + smile -->
+    <path d="M70 116c6 18 18 26 30 26s24-8 30-26c-6 8-16 12-30 12s-24-4-30-12z" fill="#1b1b1f" opacity=".85"/>
+    <path d="M88 118q12 10 24 0" fill="none" stroke="#7a2e2e" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>

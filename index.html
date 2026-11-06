@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shakil Ahmed — Your Learning & Digital Growth Partner!</title>
+<meta name="description" content="Shakil Ahmed (Abir) — ICT Lecturer, IT Support Specialist, AI-powered content & Canva designer from Dhaka, Bangladesh.">
+<meta name="author" content="Shakil Ahmed">
+<meta name="robots" content="index, follow, noimageai, noai">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta property="og:title" content="Shakil Ahmed — ICT Educator & AI Creator">
+<meta property="og:description" content="Teaching · IT Support · Canva Design · Digital Marketing · AI Automation">
+<meta property="og:image" content="assets/og.jpg">
+<link rel="icon" href="assets/me_face.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Hind+Siliguri:wght@400;600;700&family=Cairo:wght@400;700&family=Playfair+Display:wght@700&family=Bangers&family=Orbitron:wght@600&family=Mochiy+Pop+One&family=Patrick+Hand&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div id="watermark" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="brand" href="#top"><img src="assets/me_face.jpg" alt="" class="brand-av" data-avatar="face"> <span data-name></span></a>
+  <nav id="menu">
+    <a href="#about" data-i18n="nav_about"></a><a href="#skills" data-i18n="nav_skills"></a><a href="#roles" data-i18n="nav_roles"></a>
+    <a href="#work" data-i18n="nav_work"></a><a href="#services" data-i18n="nav_services"></a><a href="#tools" data-i18n="nav_tools"></a><a href="#contact" data-i18n="nav_contact"></a>
+  </nav>
+  <select id="langQuick" aria-label="Language"><option value="en">EN</option><option value="bn">বাং</option><option value="ar">ع</option><option value="de">DE</option></select>
+  <button id="burger" aria-label="Menu">☰</button>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <!-- HERO — "Meet your mentor" style (from the Number System slide). All colours follow the active theme. -->
+  <section class="hero">
+    <div class="hero-text">
+      <span class="pill">👋 <span data-i18n="hi"></span></span>
+      <h1 data-name></h1>
+      <p class="tagline" id="tagline"></p>
+      <h2 class="typed"><span id="typed"></span><span class="caret">|</span></h2>
+      <ul class="creds" id="creds"></ul>
+      <div class="cta">
+        <a class="btn primary" href="#services" data-tab="book" data-i18n="cta_book"></a>
+        <a class="btn" href="#services" data-tab="hire" data-i18n="cta_hire"></a>
+        <a class="btn" href="#services" data-tab="learn" data-i18n="cta_learn"></a>
+      </div>
+      <div class="cpills" id="cpills"></div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <i class="dot d1"></i><i class="dot d2"></i><i class="dot d3"></i>
+      <div class="portrait">
+        <i class="blob"></i>
+        <div class="cutwrap"><img src="assets/me_cut.webp" alt="" class="cut" data-avatar="cut" draggable="false"></div>
+      </div>
+    </div>
+  </section>
+  <div class="sec stats-wrap"><div class="stats" id="stats"></div><p class="loc">📍 <span id="loc"></span></p></div>
+
+  <section id="about" class="sec"><h3 data-i18n="about_t"></h3><p id="aboutText" class="lead protect"></p></section>
+
+  <!-- GAME CHARACTER SHEET -->
+  <section id="skills" class="sec">
+    <h3 data-i18n="skills_t"></h3><p class="sub" data-i18n="skills_s"></p>
+    <div class="sheet">
+      <div class="card char">
+        <img src="assets/me_card.jpg" alt="" data-avatar="card" draggable="false">
+        <div><b data-name></b><div class="muted"><span data-i18n="cls"></span>: <span data-i18n="cls_v"></span></div>
+          <div class="lvl"><span data-i18n="lvl"></span> <b id="lvlNum">27</b></div>
+          <div class="xpbar"><i id="xpFill"></i></div><small class="muted" data-i18n="xp"></small></div>
+      </div>
+      <div class="card radar"><svg id="radar" viewBox="0 0 220 220"></svg></div>
+    </div>
+    <div class="tabs" id="skillTabs"></div>
+    <div class="skills" id="skillList"></div>
+    <div class="tools" id="toolList"></div>
+    <h4 data-i18n="ach"></h4><div class="ach" id="achList"></div>
+  </section>
+
+  <section id="roles" class="sec"><h3 data-i18n="roles_t"></h3><p class="sub" data-i18n="roles_s"></p><div class="grid roles" id="roleList"></div></section>
+
+  <section id="exp" class="sec"><h3 data-i18n="exp_t"></h3><div class="timeline" id="expList"></div></section>
+
+  <section id="sectors" class="sec"><h3 data-i18n="sect_t"></h3><div class="chips big" id="sectorList"></div></section>
+
+  <section id="work" class="sec"><h3 data-i18n="work_t"></h3><p class="sub" data-i18n="work_s"></p>
+    <div class="tabs" id="workTabs"></div><div class="grid work" id="workList"></div></section>
+
+  <section id="edu" class="sec"><h3 data-i18n="edu_t"></h3><div class="grid two"><div id="eduList"></div><ul class="certs" id="certList"></ul></div></section>
+
+  <!-- SERVICES: appointment / hire / learn -->
+  <section id="services" class="sec">
+    <h3 data-i18n="serv_t"></h3>
+    <div class="tabs" id="servTabs">
+      <button data-s="book" data-i18n="tab_book" class="on"></button><button data-s="hire" data-i18n="tab_hire"></button><button data-s="learn" data-i18n="tab_learn"></button>
+    </div>
+    <form class="card form" id="f-book" data-kind="Appointment">
+      <label><span data-i18n="f_pkg"></span></label><div class="pkgs" id="pkgList"></div>
+      <div class="row"><label><span data-i18n="f_name"></span><input name="name" required></label><label><span data-i18n="f_email"></span><input name="email" type="email" required></label></div>
+      <div class="row"><label><span data-i18n="f_phone"></span><input name="phone"></label><label><span data-i18n="f_mode"></span><select name="mode"><option>Google Meet</option><option>Zoom</option><option>Phone / WhatsApp</option><option>In person (Mirpur-10)</option></select></label></div>
+      <div class="row"><label><span data-i18n="f_date"></span><input name="date" type="date" required></label><label><span data-i18n="f_time"></span><input name="time" type="time" required></label></div>
+      <label><span data-i18n="f_msg"></span><textarea name="message" rows="3"></textarea></label>
+      <p class="muted small"><span id="avail"></span><br><span data-i18n="pay_note"></span> <span id="bkash"></span></p>
+      <button class="btn primary" data-i18n="f_send"></button><p class="status"></p>
+    </form>
+    <form class="card form hidden" id="f-hire" data-kind="Hire request">
+      <label><span data-i18n="f_service"></span><select name="service" id="hireSel"></select></label>
+      <div class="row"><label><span data-i18n="f_name"></span><input name="name" required></label><label><span data-i18n="f_email"></span><input name="email" type="email" required></label></div>
+      <div class="row"><label><span data-i18n="f_budget"></span><input name="budget" type="number" min="0"></label><label><span data-i18n="f_deadline"></span><input name="deadline" type="date"></label></div>
+      <label><span data-i18n="f_msg"></span><textarea name="message" rows="4" required></textarea></label>
+      <button class="btn primary" data-i18n="f_send"></button><p class="status"></p>
+    </form>
+    <form class="card form hidden" id="f-learn" data-kind="Learning request">
+      <label><span data-i18n="f_course"></span><select name="course" id="learnSel"></select></label>
+      <div class="row"><label><span data-i18n="f_name"></span><input name="name" required></label><label><span data-i18n="f_email"></span><input name="email" type="email" required></label></div>
+      <div class="row"><label><span data-i18n="f_level"></span><select name="level"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></label><label><span data-i18n="f_mode"></span><select name="mode"><option>Online</option><option>In person</option><option>Group batch</option></select></label></div>
+      <label><span data-i18n="f_msg"></span><textarea name="message" rows="3"></textarea></label>
+      <button class="btn primary" data-i18n="f_send"></button><p class="status"></p>
+    </form>
+  </section>
+
+  <section id="tools" class="sec"><h3 data-i18n="tools_t"></h3><p class="sub" data-i18n="tools_s"></p>
+    <input id="toolSearch" class="search" data-i18n-ph="tools_ph"><div class="chips" id="toolCats"></div><div class="grid links" id="linkList"></div></section>
+
+  <section id="contact" class="sec center"><h3 data-i18n="contact_t"></h3><div class="contact" id="contactList"></div></section>
+</main>
+<footer>© <span id="yr"></span> <span data-name></span> · <span data-i18n="footer"></span></footer>
+
+<!-- CONTROL TOOLBAR -->
+<button id="tbBtn" class="fab left" aria-label="Customize">⚙️</button>
+<aside id="toolbar" class="panel hidden">
+  <div class="ph"><b data-i18n="tb_title"></b><button class="x" data-close="toolbar">✕</button></div>
+  <label class="muted" data-i18n="tb_lang"></label>
+  <div class="seg" id="langSeg"><button data-l="en">English</button><button data-l="bn">বাংলা</button><button data-l="ar">العربية</button><button data-l="de">Deutsch</button></div>
+  <label class="sw"><input type="checkbox" id="autoTheme"> <span data-i18n="tb_auto"></span></label>
+  <label class="muted" data-i18n="tb_theme"></label>
+  <div class="seg small" id="themeGroups"></div>
+  <div class="swatches" id="themeList"></div>
+  <label class="sw"><input type="checkbox" id="fxOn" checked> <span data-i18n="tb_fx"></span></label>
+  <label class="sw"><input type="checkbox" id="motionOn" checked> <span data-i18n="tb_motion"></span></label>
+  <label class="muted"><span data-i18n="tb_font"></span> <input type="range" id="fontSize" min="14" max="20" value="16"></label>
+  <div class="tbtns"><button class="btn" id="printBtn" data-i18n="tb_print"></button><button class="btn" id="resetBtn" data-i18n="tb_reset"></button></div>
+  <details><summary data-i18n="tb_admin"></summary>
+    <div id="adminLock"><input id="pinIn" type="password" data-i18n-ph="pin"><button class="btn" id="pinBtn" data-i18n="ok"></button></div>
+    <form id="adminForm" class="hidden form">
+      <select name="cat" id="admCat"></select>
+      <input name="icon" placeholder="Icon emoji e.g. 🎨" maxlength="4">
+      <input name="t" placeholder="Title (English)" required><input name="tbn" placeholder="শিরোনাম (বাংলা)">
+      <textarea name="d" placeholder="Description (English)" rows="2"></textarea><textarea name="dbn" placeholder="বিবরণ (বাংলা)" rows="2"></textarea>
+      <input name="link" placeholder="Link (Canva / Drive URL)"><input name="img" placeholder="Image path e.g. assets/projects/x.jpg">
+      <button class="btn primary" data-i18n="tb_add"></button>
+      <button type="button" class="btn" id="exportBtn" data-i18n="tb_export"></button>
+    </form>
+  </details>
+</aside>
+
+<!-- CHATBOT -->
+<button id="botBtn" class="fab right" aria-label="Chat"><img src="assets/avatar.svg" alt="" data-avatar="bot"><span class="bubble-hint" data-i18n="bot_hi"></span></button>
+<section id="bot" class="panel chat hidden" aria-label="Chatbot">
+  <div class="ph"><img src="assets/avatar.svg" alt="" class="bot-av" data-avatar="bot"><b>Abir-bot</b><span class="online">●</span><button class="x" data-close="bot">✕</button></div>
+  <div id="msgs"></div>
+  <div id="quick" class="chips"></div>
+  <form id="botForm"><input id="botIn" autocomplete="off" data-i18n-ph="bot_ph"><button class="btn primary">➤</button></form>
+</section>
+
+<!-- COPY QUEST (permission game) -->
+<div id="quest" class="modal hidden" role="dialog" aria-modal="true">
+  <div class="card qbox">
+    <h3 data-i18n="g_title"></h3><p data-i18n="g_text"></p>
+    <div id="qStage1"><p class="muted" data-i18n="g_catch"></p><div id="arena"><span id="qTimer"></span><span id="qScore"></span></div>
+      <button class="btn primary" id="qPlay" data-i18n="g_play"></button></div>
+    <form id="qStage2" class="hidden form" data-kind="Copy permission request">
+      <p data-i18n="g_win"></p>
+      <div class="row"><input name="name" required data-i18n-ph="f_name"><input name="email" type="email" required data-i18n-ph="f_email"></div>
+      <textarea name="message" rows="2" required data-i18n-ph="g_purpose"></textarea>
+      <button class="btn primary" data-i18n="g_req"></button><p class="status"></p>
+    </form>
+    <button class="btn ghost" id="qClose" data-i18n="g_close"></button>
+  </div>
+</div>
+<div id="toast"></div>
+
+<script src="js/data.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/themes.js"></script>
+<script src="js/projects.js"></script>
+<script src="js/links.js"></script>
+<script src="js/app.js"></script>
+<script src="js/chatbot.js"></script>
+<script src="js/guard.js"></script>
+</body>
+</html>
